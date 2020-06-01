@@ -20,4 +20,4 @@ if __name__ == "__main__":
         x_bars[i] = sum_of_samples / const.SAMPLES
         sum_of_samples = 0
 
-    draw.draw(x_bars, graph_title="Distribution of Samples of Posisson Distribution with $\\lambda$ = " + str(LAMBDA))
+    draw.draw(x_bars, graph_title="Distribution of Samples of Poisson Distribution with $\\lambda$ = " + str(LAMBDA))
