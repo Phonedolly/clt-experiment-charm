@@ -9,10 +9,10 @@ from tools import const
 
 def draw(x_bars, ideal_mean, ideal_var, graph_title):
     idel_std_deviation = math.sqrt(ideal_var)
-    sample_variance = x_bars.mean()  # 표본평균
-    variance = x_bars.var(ddof=1)  # 표본분산. ddof=1 옵션을 주면 N-1로 나누게된다
+    sample_mean = x_bars.mean()  # 표본평균
+    sample_variance = x_bars.var(ddof=1)  # 표본분산. ddof=1 옵션을 주면 N-1로 나누게된다
     # std_deviation = math.sqrt(variance)  # 표본표준편차
-    axis_x = np.linspace(sample_variance - 3 * idel_std_deviation, sample_variance + 3 * idel_std_deviation)  # 그래프가 가질 x축
+    axis_x = np.linspace(sample_mean - 3 * idel_std_deviation, sample_mean + 3 * idel_std_deviation)  # 그래프가 가질 x축
 
     fig, ax1 = plt.subplots()
 
@@ -22,7 +22,7 @@ def draw(x_bars, ideal_mean, ideal_var, graph_title):
     ax1.set_xlabel(
         "ideal mean: " + str(round(ideal_mean, 5)) + "   ideal variance: " + str(
             round(ideal_var, 5)) + "\nsample mean: " + str(round(
-            sample_variance, 5)) + "   sample variance: " + str(round(variance, 5)))
+            sample_mean, 5)) + "   sample variance: " + str(round(sample_variance, 5)))
     ax1.set_ylabel("num of $\\bar X_{i}$ for each class")
     bins = math.floor(math.log2(const.EXPERIMENTS)) + 1  # Sturges' formula로 적절한 계급의 수 구하기
     ax1.hist(x_bars, bins=bins, histtype='bar', label="num of $\\bar X_{i}$ for each class", color=color)
@@ -33,7 +33,7 @@ def draw(x_bars, ideal_mean, ideal_var, graph_title):
     color = 'xkcd:fuchsia'
     ax2 = ax1.twinx()  # ax1과 x축을 공유하고 y축은 따로 쓴다
 
-    gaussian_label = "N(" + str(round(sample_variance, 2)) + ", " + str(round(variance, 5)) + ")"
+    gaussian_label = "N(" + str(round(sample_mean, 2)) + ", " + str(round(ideal_var, 5)) + ")"
     gaussian = stats.norm(ideal_mean, idel_std_deviation).pdf(axis_x)
     ax2.set_ylabel(gaussian_label)
     ax2.plot(axis_x, gaussian, label=gaussian_label, color=color)
