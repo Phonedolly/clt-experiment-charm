@@ -5,7 +5,7 @@ import const
 
 if __name__ == "__main__":
     randomNumber = qs.get_sample()  # 샘플 받아오기
-    pHats = np.zeros((50,))
+    pHats = np.zeros((const.EXPERIMENTS,))
     X = 0
 
     ''' 실험하기 '''
