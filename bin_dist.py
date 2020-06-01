@@ -19,4 +19,8 @@ if __name__ == "__main__":
         x_bars[i] = X / const.SAMPLES
         X = 0
 
-    draw.draw(x_bars, graph_title="Distribution of Samples of Binomial Distribution with $p$ = 0.5")
+    ideal_mean = 1/2
+    ideal_var = (1 / 2) * (1 / 2) * (1 / const.SAMPLES)
+
+    draw.draw(x_bars, ideal_mean, ideal_var,
+              graph_title="Distribution of Samples of Binomial Distribution with $p$ = 0.5")

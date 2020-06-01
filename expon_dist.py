@@ -20,4 +20,7 @@ if __name__ == "__main__":
         x_bars[i] = sum_of_samples / const.SAMPLES
         sum_of_samples = 0
 
-    draw.draw(x_bars, graph_title="Distribution of Samples of Exponential Distribution with $\\lambda$ = " + str(LAMBDA))
+    ideal_mean = 1 / LAMBDA
+    ideal_var = (1 / (LAMBDA**2)) * (1 / const.SAMPLES)
+
+    draw.draw(x_bars, ideal_mean, ideal_var, graph_title="Distribution of Samples of Exponential Distribution with $\\lambda$ = " + str(LAMBDA))
