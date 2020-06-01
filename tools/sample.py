@@ -12,7 +12,7 @@ def get_sample(dist_type):
         cached_generator = qt.cached_generator()  # chached_generator를 생성하면 서버 딜레이를 회피할 수 있다
         for i in range(const.EXPERIMENTS):
             for j in range(const.SAMPLES):
-                random_number[i][j] = qt.randint(0, 1, cached_generator)  # cached_generator로 0에서 1사이의 값을 생성한다
+                random_number[i][j] = qt.randfloat(0, 1, cached_generator)  # cached_generator로 0에서 1사이의 값을 생성한다
 
     elif dist_type == 'binomial':
         random_number = np.zeros((const.EXPERIMENTS, const.SAMPLES))
@@ -21,7 +21,7 @@ def get_sample(dist_type):
         for i in range(const.EXPERIMENTS):
             for j in range(const.SAMPLES):
                 random_number[i][j] = math.ceil(
-                    qt.randint(0, 10, cached_generator))  # 홀수인 경우는 1, 3, 5, 7, 9, 짝수인 경우는 2, 4, 6, 8, 10이 된다
+                    qt.randfloat(0, 10, cached_generator))  # 홀수인 경우는 1, 3, 5, 7, 9, 짝수인 경우는 2, 4, 6, 8, 10이 된다
 
     else:
         raise Exception("Invalid distribution type. Allowed types are 'poisson', 'expon', 'binomial'.")

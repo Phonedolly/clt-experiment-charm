@@ -7,9 +7,9 @@ import matplotlib.pyplot as plt
 from tools import const
 
 
-def draw(pHats, graph_title):
-    mean = pHats.mean()  # 표본평균
-    variance = pHats.var(ddof=1)  # 표본분산. ddof=1 옵션을 주면 N-1로 나누게된다
+def draw(x_bars, graph_title):
+    mean = x_bars.mean()  # 표본평균
+    variance = x_bars.var(ddof=1)  # 표본분산. ddof=1 옵션을 주면 N-1로 나누게된다
     std_deviation = math.sqrt(variance)  # 표본표준편차
     axis_x = np.linspace(mean - 3 * std_deviation, mean + 3 * std_deviation)  # 그래프가 가질 x축
 
@@ -20,7 +20,7 @@ def draw(pHats, graph_title):
     ax1.set_xlabel("class of $\\bar X_{i}$")
     ax1.set_ylabel("num of $\\bar X_{i}$ for each class")
     bins = math.floor(math.log2(const.EXPERIMENTS)) + 1  # Sturges' formula로 적절한 계급의 수 구하기
-    ax1.hist(pHats, bins=bins, histtype='bar', label="num of $\\bar X_{i}$ for each class", color=color)
+    ax1.hist(x_bars, bins=bins, histtype='bar', label="num of $\\bar X_{i}$ for each class", color=color)
     ax1.set_xlim(xmin=0)
     ax1.set_ylim(ymin=0)
 

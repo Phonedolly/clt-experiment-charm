@@ -8,7 +8,7 @@ LAMBDA = 3
 if __name__ == "__main__":
     randomNumber = sample.get_sample('poisson')  # 샘플 받아오기
     sum_of_samples = 0
-    pHats = np.zeros((const.EXPERIMENTS,))
+    x_bars = np.zeros((const.EXPERIMENTS,))
 
     ''' 실험하기 '''
     # scpipy의 expon()에서 scale은 확률분포의 기댓값(1 / lambda)와 같다.
@@ -17,7 +17,7 @@ if __name__ == "__main__":
         for j in range(const.SAMPLES):
             sum_of_samples += inverse_exp_sample[j]
 
-        pHats[i] = sum_of_samples / const.SAMPLES
+        x_bars[i] = sum_of_samples / const.SAMPLES
         sum_of_samples = 0
 
-    draw.draw(pHats, graph_title="Distribution of Samples of Posisson Distribution with $\\lambda$ = " + str(LAMBDA))
+    draw.draw(x_bars, graph_title="Distribution of Samples of Posisson Distribution with $\\lambda$ = " + str(LAMBDA))
