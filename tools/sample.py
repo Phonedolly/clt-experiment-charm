@@ -20,8 +20,8 @@ def get_sample(dist_type):
 
         for i in range(const.EXPERIMENTS):
             for j in range(const.SAMPLES):
-                random_number[i][j] = math.ceil(
-                    qt.randfloat(0, 10, cached_generator))  # 홀수인 경우는 1, 3, 5, 7, 9, 짝수인 경우는 2, 4, 6, 8, 10이 된다
+                random_number[i][j] = math.floor(
+                    qt.randint(0, 10, cached_generator))  # 홀수인 경우는 1, 3, 5, 7, 9, 짝수인 경우는 0, 2, 4, 6, 8이 된다
 
     else:
         raise Exception("Invalid distribution type. Allowed types are 'poisson', 'expon', 'binomial'.")
